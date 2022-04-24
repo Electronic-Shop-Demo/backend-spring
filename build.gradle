@@ -6,8 +6,23 @@ plugins {
 }
 
 group = 'com.mairwunnx'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+version = '1.0.0-SNAPSHOT'
+
+new File('creds.properties').createNewFile()
+final def properties = new Properties()
+properties.load(new FileInputStream('creds.properties'))
+
+final def config = [
+    "products.datasource.driver-class-name": 'org.postgresql.Driver',
+    "products.datasource.url"              : System.getenv('backendtest_pg_url') ?: properties.get('backendtest_pg_url'),
+    "products.datasource.username"         : System.getenv('backendtest_pg_user') ?: properties.get('backendtest_pg_user'),
+    "products.datasource.password"         : System.getenv('backendtest_pg_pass') ?: properties.get('backendtest_pg_pass'),
+    "mongodb.datasource.url"               : System.getenv('mongodb_url') ?: properties.get('mongodb_url')
+]
+
+bootRun {
+    environment += config
+}
 
 configurations {
     compileOnly {
