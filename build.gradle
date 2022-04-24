@@ -13,11 +13,17 @@ final def properties = new Properties()
 properties.load(new FileInputStream('creds.properties'))
 
 final def config = [
-    "products.datasource.driver-class-name": 'org.postgresql.Driver',
-    "products.datasource.url"              : System.getenv('backendtest_pg_url') ?: properties.get('backendtest_pg_url'),
-    "products.datasource.username"         : System.getenv('backendtest_pg_user') ?: properties.get('backendtest_pg_user'),
-    "products.datasource.password"         : System.getenv('backendtest_pg_pass') ?: properties.get('backendtest_pg_pass'),
-    "mongodb.datasource.url"               : System.getenv('mongodb_url') ?: properties.get('mongodb_url')
+    "products.datasource.driver-class-name"          : 'org.postgresql.Driver',
+    "products.datasource.url"                        : System.getenv('pgsql_shop_db_url') ?: properties.get('pgsql_shop_db_url'),
+    "products.datasource.username"                   : System.getenv('pgsql_shop_db_user') ?: properties.get('pgsql_shop_db_user'),
+    "products.datasource.password"                   : System.getenv('pgsql_shop_db_pass') ?: properties.get('pgsql_shop_db_pass'),
+    "mongodb.datasource.url"                         : System.getenv('mongodb_files_db_url') ?: properties.get('mongodb_files_db_url'),
+    "app.security.jwt.key-alias"                     : System.getenv('shop_jwt_token_als') ?: properties.get('shop_jwt_token_als'),
+    "app.security.jwt.keystore-password"             : System.getenv('shop_jwt_token_pwd') ?: properties.get('shop_jwt_token_pwd'),
+    "app.security.jwt.private-key-passphrase"        : System.getenv('shop_jwt_token_phr') ?: properties.get('shop_jwt_token_phr'),
+    "app.security.jwt.refresh.key-alias"             : System.getenv('shop_jwt_refresh_als') ?: properties.get('shop_jwt_refresh_als'),
+    "app.security.jwt.refresh.keystore-password"     : System.getenv('shop_jwt_refresh_pwd') ?: properties.get('shop_jwt_refresh_pwd'),
+    "app.security.jwt.refresh.private-key-passphrase": System.getenv('shop_jwt_refresh_phr') ?: properties.get('shop_jwt_refresh_phr')
 ]
 
 bootRun {
