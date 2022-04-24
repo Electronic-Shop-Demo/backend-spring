@@ -31,7 +31,7 @@ abstract class CacheBase<IN, OUT> {
     }
 
     @ParametersAreNonnullByDefault
-    @NotNull OUT getOrCache(final IN in) {
+    public @NotNull OUT getOrCache(final IN in) {
         try {
             return cache.get(in, () -> getNewInstance(in));
         } catch (final ExecutionException e) {
