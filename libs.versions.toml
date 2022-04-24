@@ -1,0 +1,59 @@
+# Dependencies provided without specific versions prodived by spring boot plugin.
+
+[versions]
+jetbrains-annotations = "23.0.0"
+mapstruct = "1.4.2.Final"
+guava = "31.1-jre"
+bcpkix = "1.71"
+apache-commons-lang = "3.12.0"
+apache-commons-text = "1.9"
+auth0-jwt = "3.19.1"
+jedis = "4.2.1"
+mongodb-driver = "4.5.1"
+
+[libraries]
+jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
+bcpkix = { module = "org.bouncycastle:bcpkix-jdk15to18", version.ref = "bcpkix" }
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+apache-commons-lang = { module = "org.apache.commons:commons-lang3", version.ref = "apache-commons-lang" }
+apache-commons-text = { module = "org.apache.commons:commons-text", version.ref = "apache-commons-text" }
+auth0-jwt = { module = "com.auth0:java-jwt", version.ref = "auth0-jwt" }
+jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
+lombok = { module = "org.projectlombok:lombok" }
+
+# Database drivers
+
+mongodb-driver = { module = "org.mongodb:mongodb-driver-sync", version.ref = "mongodb-driver" }
+pgsql-driver = { module = "org.postgresql:postgresql" }
+
+# Spring specific dependencies (starts with `sp` namespace)
+
+sp-jcl = { module = "org.springframework:spring-jcl" }
+sp-oauth2-client = { module = "org.springframework.boot:spring-boot-starter-oauth2-client" }
+sp-oauth2-resource-server = { module = "org.springframework.boot:spring-boot-starter-oauth2-resource-server" }
+sp-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+sp-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
+sp-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
+sp-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+sp-security-test = { module = "org.springframework.security:spring-security-test" }
+
+[bundles]
+jetbrains = ["jetbrains-annotations"]
+mapstruct = ["mapstruct"]
+auth0jwt = ["auth0-jwt"]
+jedis = ["jedis"]
+lombok = ["lombok"]
+guava = ["guava"]
+bouncycastle = ["bcpkix"]
+apache = ["apache-commons-lang", "apache-commons-text"]
+drivers = ["mongodb-driver", "pgsql-driver"]
+spring = [
+    "sp-jcl",
+    "sp-oauth2-client",
+    "sp-oauth2-resource-server",
+    "sp-starter-security"
+]
+devtools = ["sp-devtools"]
+springConfigurationProcessor = ["sp-configuration-processor"]
+springTest = ["sp-starter-test", "sp-security-test"]
