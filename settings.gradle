@@ -1,3 +1,6 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+import org.gradle.api.internal.FeaturePreviews
+
 pluginManagement {
     repositories {
         maven { url 'https://repo.spring.io/milestone' }
@@ -6,8 +9,17 @@ pluginManagement {
     }
 }
 
+enableFeaturePreview FeaturePreviews.Feature.VERSION_CATALOGS.toString()
+enableFeaturePreview FeaturePreviews.Feature.VERSION_ORDERING_V2.toString()
+
 dependencyResolutionManagement {
     repositoriesMode.set RepositoriesMode.FAIL_ON_PROJECT_REPOS
+
+    versionCatalogs {
+        libs {
+            from files('libs.versions.toml')
+        }
+    }
 
     repositories {
         maven { url 'https://repo.spring.io/milestone' }
