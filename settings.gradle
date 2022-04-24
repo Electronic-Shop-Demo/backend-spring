@@ -2,6 +2,18 @@ pluginManagement {
     repositories {
         maven { url 'https://repo.spring.io/milestone' }
         gradlePluginPortal()
+        mavenCentral()
     }
 }
+
+dependencyResolutionManagement {
+    repositoriesMode.set RepositoriesMode.FAIL_ON_PROJECT_REPOS
+
+    repositories {
+        maven { url 'https://repo.spring.io/milestone' }
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
 rootProject.name = 'application'
