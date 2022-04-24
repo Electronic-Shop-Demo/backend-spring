@@ -9,7 +9,7 @@ apache-commons-lang = "3.12.0"
 apache-commons-text = "1.9"
 auth0-jwt = "3.19.1"
 jedis = "4.2.2"
-mongodb-driver = "4.5.1"
+mongodb-driver = "4.6.0"
 
 [libraries]
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
