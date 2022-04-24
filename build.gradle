@@ -59,3 +59,31 @@ tasks.named('test') {
         exceptionFormat = 'full'
     }
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += '--enable-preview'
+    options.fork = true
+    options.failOnError = false
+    options.debug = false
+}
+
+tasks.withType(Test) {
+    jvmArgs += '--enable-preview'
+    environment += config
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.required = false
+        html.required = true
+        html.stylesheet resources.text.fromFile('config/xsl/checkstyle.xsl')
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of 17
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
+}
