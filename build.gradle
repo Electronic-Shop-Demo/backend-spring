@@ -31,16 +31,25 @@ configurations {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
+    implementation(libs.bundles.jetbrains)
+    implementation(libs.bundles.lombok)
+    implementation(libs.bundles.mapstruct)
+    implementation(libs.bundles.jedis)
+    implementation(libs.bundles.guava)
+    implementation(libs.bundles.auth0jwt)
+    implementation(libs.bundles.apache)
+    implementation(libs.bundles.spring)
+    implementation(libs.bundles.bouncycastle)
+
+    runtimeOnly(libs.bundles.drivers)
+    compileOnly(libs.bundles.lombok)
+    developmentOnly(libs.bundles.devtools)
+
+    annotationProcessor(libs.bundles.springConfigurationProcessor)
+    annotationProcessor(libs.bundles.lombok)
+    annotationProcessor(libs.bundles.mapstruct)
+
+    testImplementation(libs.bundles.springTest)
 }
 
 tasks.named('test') {
