@@ -10,6 +10,7 @@ apache-commons-text = "1.9"
 auth0-jwt = "3.19.1"
 jedis = "4.2.2"
 mongodb-driver = "4.6.0"
+jooq = "3.17.0-SNAPSHOT"
 
 [libraries]
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
@@ -21,6 +22,12 @@ apache-commons-text = { module = "org.apache.commons:commons-text", version.ref 
 auth0-jwt = { module = "com.auth0:java-jwt", version.ref = "auth0-jwt" }
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 lombok = { module = "org.projectlombok:lombok" }
+
+# Database accessors
+
+jooq-core = { module = "org.jooq:jooq", version.ref = "jooq" }
+jooq-meta = { module = "org.jooq:jooq-meta", version.ref = "jooq" }
+jooq-codegen = { module = "org.jooq:jooq-codegen", version.ref = "jooq" }
 
 # Database drivers
 
@@ -48,6 +55,7 @@ guava = ["guava"]
 bouncycastle = ["bcpkix"]
 apache = ["apache-commons-lang", "apache-commons-text"]
 drivers = ["mongodb-driver", "pgsql-driver"]
+pgsql = ["pgsql-driver"]
 spring = [
     "sp-jcl",
     "sp-oauth2-client",
@@ -57,3 +65,4 @@ spring = [
 devtools = ["sp-devtools"]
 springConfigurationProcessor = ["sp-configuration-processor"]
 springTest = ["sp-starter-test", "sp-security-test"]
+jooq = ["jooq-core", "jooq-meta", "jooq-codegen"]
