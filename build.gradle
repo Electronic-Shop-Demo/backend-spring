@@ -128,10 +128,32 @@ jooq {
                         excludes = ''
                     }
                     generate {
+                        generatedAnnotation = true
+
+                        nullableAnnotation = true
+                        nullableAnnotationType = 'org.jetbrains.annotations.Nullable'
+
+                        nonnullAnnotation = true
+                        nonnullAnnotationType = 'org.jetbrains.annotations.NotNull'
+
+                        springAnnotations = true
+
+                        javaTimeTypes = true
+                        jsonTypes = true
                         deprecated = false
                         records = true
                         immutablePojos = true
                         fluentSetters = true
+
+                        globalTableReferences = true
+                        globalCatalogReferences = false
+                        globalSchemaReferences = false
+                        globalSequenceReferences = false
+                        globalDomainReferences = false
+                        globalUDTReferences = false
+                        globalRoutineReferences = false
+                        globalQueueReferences = false
+                        globalLinkReferences = false
                     }
                     target {
                         packageName = 'com.mairwunnx.application'
