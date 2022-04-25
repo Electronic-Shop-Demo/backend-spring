@@ -142,7 +142,6 @@ jooq {
                         javaTimeTypes = true
                         deprecated = false
                         records = true
-                        immutablePojos = true
                         fluentSetters = true
 
                         globalTableReferences = true
