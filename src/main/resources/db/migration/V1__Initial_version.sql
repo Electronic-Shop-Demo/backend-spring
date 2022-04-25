@@ -47,5 +47,5 @@ comment on column items.discount is 'Reference to discount id specified for this
 create unique index items_id_uindex
     on items (id);
 
-ALTER TABLE IF EXISTS public.product_entity
+ALTER TABLE IF EXISTS public.items
     OWNER to "Mairw";
