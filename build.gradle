@@ -139,7 +139,6 @@ jooq {
                         springAnnotations = true
 
                         javaTimeTypes = true
-                        jsonTypes = true
                         deprecated = false
                         records = true
                         immutablePojos = true
