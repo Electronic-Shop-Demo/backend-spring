@@ -107,6 +107,7 @@ flyway {
     url = config['products.datasource.url']
     user = config['products.datasource.username']
     password = config['products.datasource.password']
+    locations = ['classpath:db/migration']
 }
 
 jooq {
