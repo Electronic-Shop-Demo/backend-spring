@@ -1,6 +1,6 @@
 package com.mairwunnx.application.cache;
 
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -16,7 +16,7 @@ public final class UUIDCache extends CacheBase<String, UUID> {
 
     @Override
     @ParametersAreNonnullByDefault
-    @NonNull UUID getNewInstance(final String in) {
+    @NotNull UUID getNewInstance(final String in) {
         return UUID.fromString(in);
     }
 
