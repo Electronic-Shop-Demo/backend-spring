@@ -3,6 +3,8 @@ plugins {
     id 'checkstyle'
     id 'org.springframework.boot' version '3.0.0-M2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'nu.studer.jooq' version '7.1.1'
+    id 'org.flywaydb.flyway' version '8.5.9'
 }
 
 group = 'com.mairwunnx'
@@ -31,6 +33,8 @@ bootRun {
 }
 
 configurations {
+    flywayMigration
+
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -46,10 +50,14 @@ dependencies {
     implementation(libs.bundles.apache)
     implementation(libs.bundles.spring)
     implementation(libs.bundles.bouncycastle)
+    implementation(libs.bundles.jooq)
 
     runtimeOnly(libs.bundles.drivers)
     compileOnly(libs.bundles.lombok)
     developmentOnly(libs.bundles.devtools)
+
+    jooqGenerator(libs.bundles.pgsql)
+    flywayMigration(libs.bundles.pgsql)
 
     annotationProcessor(libs.bundles.springConfigurationProcessor)
     annotationProcessor(libs.bundles.lombok)
@@ -89,6 +97,61 @@ tasks.withType(Checkstyle) {
 
 java {
     toolchain {
+        languageVersion = JavaLanguageVersion.of 17
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
+}
+
+flyway {
+    configurations = ['flywayMigration']
+    url = config['products.datasource.url']
+    user = config['products.datasource.username']
+    password = config['products.datasource.password']
+}
+
+jooq {
+    configurations {
+        main {
+            generationTool {
+                logging = org.jooq.meta.jaxb.Logging.WARN
+                jdbc {
+                    driver = config['products.datasource.driver-class-name']
+                    url = config['products.datasource.url']
+                    user = config['products.datasource.username']
+                    password = config['products.datasource.password']
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    database {
+                        name = 'org.jooq.meta.postgres.PostgresDatabase'
+                        includes = '.*'
+                        excludes = ''
+                    }
+                    generate {
+                        deprecated = false
+                        records = true
+                        immutablePojos = true
+                        fluentSetters = true
+                    }
+                    target {
+                        packageName = 'com.mairwunnx.application'
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.named('generateJooq').configure {
+    dependsOn tasks.named('flywayMigrate')
+
+    inputs.files(fileTree('src/main/resources/db/migration'))
+        .withPropertyName('migrations')
+        .withPathSensitivity(PathSensitivity.RELATIVE)
+
+    allInputsDeclared = true
+
+    launcher = javaToolchains.launcherFor {
         languageVersion = JavaLanguageVersion.of 17
         vendor = JvmVendorSpec.ADOPTIUM
     }
