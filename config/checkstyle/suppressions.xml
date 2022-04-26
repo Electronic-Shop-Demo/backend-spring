@@ -4,5 +4,6 @@
     "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
     "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 <suppressions>
- <!--   <suppress files="*" checks="VisibilityModifier" />-->
+    <suppress files="[\\/]generated-src[\\/]" checks="[a-zA-Z0-9]*"/>
+    <suppress files="EmailValidator\.java" checks="LineLength" />
 </suppressions>
