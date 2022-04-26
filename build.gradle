@@ -88,6 +88,8 @@ tasks.withType(Test) {
 }
 
 tasks.withType(Checkstyle) {
+    exclude '**/generated-src/**'
+
     reports {
         xml.required = false
         html.required = true
