@@ -36,7 +36,7 @@ public final class Constants {
     }
 
     public static final class Api {
-        public static final String ENDPOINT_BASE = "/api";
+        public static final String ENDPOINT_BASE = "/api/v1";
     }
 
     public static final class Jwt {
