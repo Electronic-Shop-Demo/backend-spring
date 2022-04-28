@@ -22,6 +22,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static com.mairwunnx.application.Constants.Api.ENDPOINT_BASE;
 
 @ApiStage(ApiStageType.PROTOTYPE)
+@RequiredArgsConstructor
 @RestController
 public final class AuthController {
 
