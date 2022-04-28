@@ -8,6 +8,7 @@ import com.mairwunnx.application.dto.request.RefreshRequestDto;
 import com.mairwunnx.application.dto.request.RegisterRequestDto;
 import com.mairwunnx.application.dto.response.LoginResponseDto;
 import com.mairwunnx.application.dto.response.RefreshResponseDto;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContext;
@@ -24,7 +25,7 @@ import static com.mairwunnx.application.Constants.Api.ENDPOINT_BASE;
 @RestController
 public final class AuthController {
 
-    private static final String END_POINT = ENDPOINT_BASE + "/auth";
+    private static final String END_POINT = ENDPOINT_BASE + "/auth/";
 
     @PostMapping(END_POINT + "login")
     @ResponseBody
