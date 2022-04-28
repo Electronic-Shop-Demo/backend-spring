@@ -22,7 +22,7 @@ import static com.mairwunnx.application.Constants.Api.ENDPOINT_BASE;
 
 @ApiStage(ApiStageType.PROTOTYPE)
 @RestController
-public class AuthController {
+public final class AuthController {
 
     private static final String END_POINT = ENDPOINT_BASE + "/auth";
 
