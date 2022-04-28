@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @Component
-public class UsernameValidator implements ValidatorBase<String> {
+public final class UsernameValidator implements ValidatorBase<String> {
 
     @Override
     @ParametersAreNonnullByDefault
