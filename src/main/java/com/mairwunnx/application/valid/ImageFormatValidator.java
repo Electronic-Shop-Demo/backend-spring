@@ -9,7 +9,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import static com.mairwunnx.application.Constants.Errors.NO_IMAGE_EXTENSION;
 
 @Component
-public class ImageFormatValidator implements ValidatorBase<String> {
+public final class ImageFormatValidator implements ValidatorBase<String> {
 
     @Override
     @ParametersAreNonnullByDefault
