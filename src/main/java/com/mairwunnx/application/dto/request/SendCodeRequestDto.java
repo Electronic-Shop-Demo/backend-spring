@@ -1,7 +1,7 @@
 package com.mairwunnx.application.dto.request;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
-public record SendCodeRequestDto(@NotNull String phone) {
+public record SendCodeRequestDto(@NonNull String phone) {
 
 }

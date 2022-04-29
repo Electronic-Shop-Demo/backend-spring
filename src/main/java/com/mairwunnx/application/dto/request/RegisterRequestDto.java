@@ -1,12 +1,12 @@
 package com.mairwunnx.application.dto.request;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
 public record RegisterRequestDto(
-    @NotNull String username,
-    @NotNull String password,
-    @NotNull String phone,
-    @NotNull String email
+    @NonNull String username,
+    @NonNull String password,
+    @NonNull String phone,
+    @NonNull String email
 ) {
 
 }

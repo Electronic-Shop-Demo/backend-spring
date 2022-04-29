@@ -1,9 +1,9 @@
 package com.mairwunnx.application.dto.response;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
 import java.util.UUID;
 
-public record SendCodeResponseDto(@NotNull UUID session) {
+public record SendCodeResponseDto(@NonNull UUID session) {
 
 }

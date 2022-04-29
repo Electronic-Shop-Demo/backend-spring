@@ -1,9 +1,9 @@
 package com.mairwunnx.application.dto.request;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
 import java.util.UUID;
 
-public record VerifyCodeRequestDto(@NotNull String phone, @NotNull UUID session, @NotNull String code) {
+public record VerifyCodeRequestDto(@NonNull String phone, @NonNull UUID session, @NonNull String code) {
 
 }

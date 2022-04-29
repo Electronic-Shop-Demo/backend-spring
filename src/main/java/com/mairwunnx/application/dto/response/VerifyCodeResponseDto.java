@@ -1,7 +1,7 @@
 package com.mairwunnx.application.dto.response;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
-public record VerifyCodeResponseDto(@NotNull String token) {
+public record VerifyCodeResponseDto(@NonNull String token) {
 
 }

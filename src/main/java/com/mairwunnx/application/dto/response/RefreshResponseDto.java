@@ -1,7 +1,7 @@
 package com.mairwunnx.application.dto.response;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
-public record RefreshResponseDto(@NotNull String token, @NotNull String refreshToken) {
+public record RefreshResponseDto(@NonNull String token, @NonNull String refreshToken) {
 
 }

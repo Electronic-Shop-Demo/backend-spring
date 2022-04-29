@@ -1,6 +1,7 @@
 package com.mairwunnx.application.dto.request;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
-public record RefreshRequestDto(@NotNull String email, @NotNull String refreshToken) {
+public record RefreshRequestDto(@NonNull String email, @NonNull String refreshToken) {
+
 }

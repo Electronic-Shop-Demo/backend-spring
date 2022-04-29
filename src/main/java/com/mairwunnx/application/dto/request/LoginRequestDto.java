@@ -1,7 +1,7 @@
 package com.mairwunnx.application.dto.request;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
-public record LoginRequestDto(@NotNull String email, @NotNull String password) {
+public record LoginRequestDto(@NonNull String email, @NonNull String password) {
 
 }
