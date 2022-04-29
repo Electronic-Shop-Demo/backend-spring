@@ -3,12 +3,12 @@
   <component name="CheckStyle-IDEA">
     <option name="configuration">
       <map>
-        <entry key="active-configuration" value="PROJECT_RELATIVE:$PROJECT_DIR$/config/checkstyle/checkstyle.xml:user configured" />
+        <entry key="active-configuration-0" value="PROJECT_RELATIVE:C:/Users/Mairw/Documents/GitHub/Electronic-Shop-Spring/config/checkstyle/checkstyle.xml:user configured" />
         <entry key="checkstyle-version" value="10.1" />
         <entry key="copy-libs" value="true" />
-        <entry key="location-0" value="BUNDLED:(bundled):Sun Checks" />
-        <entry key="location-1" value="BUNDLED:(bundled):Google Checks" />
-        <entry key="location-2" value="PROJECT_RELATIVE:$PROJECT_DIR$/config/checkstyle/checkstyle.xml:user configured" />
+        <entry key="location-0" value="BUNDLED:(bundled):Sun Checks;All" />
+        <entry key="location-1" value="BUNDLED:(bundled):Google Checks;All" />
+        <entry key="location-2" value="PROJECT_RELATIVE:$PROJECT_DIR$/config/checkstyle/checkstyle.xml:user configured;All" />
         <entry key="property-2.org.checkstyle.sun.suppressionfilter.config" value="" />
         <entry key="property-2.org.checkstyle.sun.suppressionxpathfilter.config" value="" />
         <entry key="scan-before-checkin" value="false" />
