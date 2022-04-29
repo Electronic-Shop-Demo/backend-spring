@@ -1,12 +1,13 @@
 package com.mairwunnx.application.valid;
 
-import com.mairwunnx.application.Constants;
 import com.mairwunnx.application.exception.CodeAwareException;
 import org.jetbrains.annotations.Contract;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+
+import static com.mairwunnx.application.Constants.Errors.UUID_IS_INCORRECT;
 
 @Component
 public final class UUIDValidator implements ValidatorBase<String> {
@@ -27,7 +28,7 @@ public final class UUIDValidator implements ValidatorBase<String> {
     }
 
     private void invalid() {
-        throw new CodeAwareException(Constants.Errors.UUID_IS_INCORRECT, HttpStatus.BAD_REQUEST);
+        throw new CodeAwareException(UUID_IS_INCORRECT, HttpStatus.BAD_REQUEST);
     }
 
 }
