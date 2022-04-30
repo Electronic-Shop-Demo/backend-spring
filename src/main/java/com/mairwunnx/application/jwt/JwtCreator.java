@@ -21,6 +21,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public final class JwtCreator {
 
+    private static final Calendar CALENDAR_INSTANCE = Calendar.getInstance();
+
     @Qualifier("jwtSigningKey") @NonNull private final RSAPrivateKey privateKey;
     @Qualifier("jwtValidationKey") @NonNull private final RSAPublicKey publicKey;
     @Qualifier("refreshJwtSigningKey") @NonNull private final RSAPrivateKey refreshPrivateKey;
@@ -42,10 +44,9 @@ public final class JwtCreator {
     }
 
     private @NotNull Calendar lifetimeCalendarOf(final int field, final int amount) {
-        final var calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(Instant.now().toEpochMilli());
-        calendar.add(field, amount);
-        return calendar;
+        CALENDAR_INSTANCE.setTimeInMillis(Instant.now().toEpochMilli());
+        CALENDAR_INSTANCE.add(field, amount);
+        return CALENDAR_INSTANCE;
     }
 
     @ParametersAreNonnullByDefault
