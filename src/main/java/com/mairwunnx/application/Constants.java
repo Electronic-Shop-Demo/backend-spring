@@ -61,8 +61,8 @@ public final class Constants {
     public static final class MongoDb {
         public static final String APP = "backendtest";
         public static final String ID_NAME = "_id";
-        public static final String DB = "test";
-        public static final String CONNECTION_STRING_REF = "mongodb.datasource.url";
+        public static final String DB = "shop";
+        public static final String CONNECTION_STRING_REF = "mongodb_files_db_url";
 
         public static final class Collections {
             public static final String PRODUCT_IMAGES = "products_images";
