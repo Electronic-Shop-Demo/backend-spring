@@ -15,22 +15,18 @@ final def properties = new Properties()
 properties.load(new FileInputStream('creds.properties'))
 
 final def config = [
-    "products.datasource.driver-class-name"          : 'org.postgresql.Driver',
-    "products.datasource.url"                        : System.getenv('pgsql_shop_db_url') ?: properties.get('pgsql_shop_db_url'),
-    "products.datasource.username"                   : System.getenv('pgsql_shop_db_user') ?: properties.get('pgsql_shop_db_user'),
-    "products.datasource.password"                   : System.getenv('pgsql_shop_db_pass') ?: properties.get('pgsql_shop_db_pass'),
-    "mongodb.datasource.url"                         : System.getenv('mongodb_files_db_url') ?: properties.get('mongodb_files_db_url'),
-    "app.security.jwt.key-alias"                     : System.getenv('shop_jwt_token_als') ?: properties.get('shop_jwt_token_als'),
-    "app.security.jwt.keystore-password"             : System.getenv('shop_jwt_token_pwd') ?: properties.get('shop_jwt_token_pwd'),
-    "app.security.jwt.private-key-passphrase"        : System.getenv('shop_jwt_token_phr') ?: properties.get('shop_jwt_token_phr'),
-    "app.security.jwt.refresh.key-alias"             : System.getenv('shop_jwt_refresh_als') ?: properties.get('shop_jwt_refresh_als'),
-    "app.security.jwt.refresh.keystore-password"     : System.getenv('shop_jwt_refresh_pwd') ?: properties.get('shop_jwt_refresh_pwd'),
-    "app.security.jwt.refresh.private-key-passphrase": System.getenv('shop_jwt_refresh_phr') ?: properties.get('shop_jwt_refresh_phr')
+    "products_datasource_driver-class-name"          : System.getenv('pgsql_shop_db_driver') ?: 'org.postgresql.Driver',
+    "products_datasource_url"                        : System.getenv('pgsql_shop_db_url') ?: properties.get('pgsql_shop_db_url'),
+    "products_datasource_username"                   : System.getenv('pgsql_shop_db_user') ?: properties.get('pgsql_shop_db_user'),
+    "products_datasource_password"                   : System.getenv('pgsql_shop_db_pass') ?: properties.get('pgsql_shop_db_pass'),
+    "mongodb_datasource_url"                         : System.getenv('mongodb_files_db_url') ?: properties.get('mongodb_files_db_url'),
+    "app_security_jwt_key-alias"                     : System.getenv('shop_jwt_token_als') ?: properties.get('shop_jwt_token_als'),
+    "app_security_jwt_keystore-password"             : System.getenv('shop_jwt_token_pwd') ?: properties.get('shop_jwt_token_pwd'),
+    "app_security_jwt_private-key-passphrase"        : System.getenv('shop_jwt_token_phr') ?: properties.get('shop_jwt_token_phr'),
+    "app_security_jwt_refresh_key-alias"             : System.getenv('shop_jwt_refresh_als') ?: properties.get('shop_jwt_refresh_als'),
+    "app_security_jwt_refresh_keystore-password"     : System.getenv('shop_jwt_refresh_pwd') ?: properties.get('shop_jwt_refresh_pwd'),
+    "app_security_jwt_refresh_private-key-passphrase": System.getenv('shop_jwt_refresh_phr') ?: properties.get('shop_jwt_refresh_phr')
 ]
-
-bootRun {
-    environment += config
-}
 
 configurations {
     flywayMigration
@@ -84,7 +80,6 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Test) {
     jvmArgs += '--enable-preview'
-    environment += config
 }
 
 tasks.withType(Checkstyle) {
@@ -106,9 +101,9 @@ java {
 
 flyway {
     configurations = ['flywayMigration']
-    url = config['products.datasource.url']
-    user = config['products.datasource.username']
-    password = config['products.datasource.password']
+    url = config['products_datasource_url']
+    user = config['products_datasource_username']
+    password = config['products_datasource_password']
     locations = ['classpath:db/migration']
 }
 
@@ -118,10 +113,10 @@ jooq {
             generationTool {
                 logging = org.jooq.meta.jaxb.Logging.WARN
                 jdbc {
-                    driver = config['products.datasource.driver-class-name']
-                    url = config['products.datasource.url']
-                    user = config['products.datasource.username']
-                    password = config['products.datasource.password']
+                    driver = config['products_datasource_driver-class-name']
+                    url = config['products_datasource_url']
+                    user = config['products_datasource_username']
+                    password = config['products_datasource_password']
                 }
                 generator {
                     name = 'org.jooq.codegen.DefaultGenerator'
