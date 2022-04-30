@@ -40,6 +40,7 @@ sp-jcl = { module = "org.springframework:spring-jcl" }
 sp-oauth2-client = { module = "org.springframework.boot:spring-boot-starter-oauth2-client" }
 sp-oauth2-resource-server = { module = "org.springframework.boot:spring-boot-starter-oauth2-resource-server" }
 sp-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+sp-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 sp-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 sp-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 sp-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
@@ -60,7 +61,8 @@ spring = [
     "sp-jcl",
     "sp-oauth2-client",
     "sp-oauth2-resource-server",
-    "sp-starter-security"
+    "sp-starter-security",
+    "sp-starter-web"
 ]
 devtools = ["sp-devtools"]
 springConfigurationProcessor = ["sp-configuration-processor"]
