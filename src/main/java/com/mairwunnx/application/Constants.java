@@ -59,7 +59,7 @@ public final class Constants {
     }
 
     public static final class MongoDb {
-        public static final String APP = "backendtest";
+        public static final String APP = "ElectronicShop";
         public static final String ID_NAME = "_id";
         public static final String DB = "shop";
         public static final String CONNECTION_STRING_REF = "mongodb_files_db_url";
