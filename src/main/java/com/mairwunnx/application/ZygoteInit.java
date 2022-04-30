@@ -8,17 +8,21 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @Log4j2
 @SpringBootApplication
+@SuppressWarnings("resource")
 public class ZygoteInit {
 
     @ParametersAreNonnullByDefault
     public static void main(final String[] args) {
-        final var context = SpringApplication.run(ZygoteInit.class, args);
-
-        try (context) {
+        try {
+            final var context = SpringApplication.run(ZygoteInit.class, args);
             log.info("Application {} has started", context.getApplicationName());
         } catch (final Exception ex) {
-            log.error("Can't start application", ex);
-            System.exit(-1);
+            if (ex.getClass().getName().contains("SilentExitException")) {
+                log.warn("Silent error: spring is restarting the main thread - See spring-boot-devtools");
+            } else {
+                log.error("Can't start application", ex);
+                System.exit(-1);
+            }
         }
     }
 
