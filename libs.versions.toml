@@ -11,6 +11,7 @@ auth0-jwt = "3.19.1"
 jedis = "4.2.2"
 mongodb-driver = "4.6.0"
 jooq = "3.17.0-SNAPSHOT"
+mongock = "5.0.36"
 
 [libraries]
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
@@ -22,6 +23,9 @@ apache-commons-text = { module = "org.apache.commons:commons-text", version.ref 
 auth0-jwt = { module = "com.auth0:java-jwt", version.ref = "auth0-jwt" }
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 lombok = { module = "org.projectlombok:lombok" }
+mongock = { module = "io.mongock:mongock-bom", version.ref = "mongock" }
+mongock-spring = { module = "io.mongock:mongock-springboot", version.ref = "mongock" }
+mongock-spring-driver = { module = "io.mongock:mongodb-springdata-v3-driver", version.ref = "mongock" }
 
 # Database accessors
 
@@ -68,3 +72,4 @@ devtools = ["sp-devtools"]
 springConfigurationProcessor = ["sp-configuration-processor"]
 springTest = ["sp-starter-test", "sp-security-test"]
 jooq = ["jooq-core", "jooq-meta", "jooq-codegen"]
+mongock = ["mongock", "mongock-spring", "mongock-spring-driver"]
