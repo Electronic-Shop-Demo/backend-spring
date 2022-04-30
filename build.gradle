@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.bundles.spring)
     implementation(libs.bundles.bouncycastle)
     implementation(libs.bundles.jooq)
+    implementation(libs.bundles.mongock)
+    implementation(libs.bundles.drivers)
 
     runtimeOnly(libs.bundles.drivers)
     compileOnly(libs.bundles.lombok)
