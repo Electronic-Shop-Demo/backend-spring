@@ -23,10 +23,10 @@ public final class JwtCreator {
 
     private static final Calendar CALENDAR_INSTANCE = Calendar.getInstance();
 
-    @Qualifier("jwtSigningKey") @NonNull private final RSAPrivateKey privateAuthenticationSignKey;
-    @Qualifier("jwtValidationKey") @NonNull private final RSAPublicKey publicAuthenticationValidationKey;
-    @Qualifier("refreshJwtSigningKey") @NonNull private final RSAPrivateKey privateRefreshSignKey;
-    @Qualifier("refreshJwtValidationKey") @NonNull private final RSAPublicKey publicRefreshValidationKey;
+    @Qualifier("privateAuthenticationSignKey") @NonNull private final RSAPrivateKey privateAuthenticationSignKey;
+    @Qualifier("publicAuthenticationValidationKey") @NonNull private final RSAPublicKey publicAuthenticationValidationKey;
+    @Qualifier("privateRefreshSignKey") @NonNull private final RSAPrivateKey privateRefreshSignKey;
+    @Qualifier("publicRefreshValidationKey") @NonNull private final RSAPublicKey publicRefreshValidationKey;
 
     @ParametersAreNonnullByDefault
     public @NotNull String createAuthorizationJwt(final String subject, final Map<String, String> claims) {
