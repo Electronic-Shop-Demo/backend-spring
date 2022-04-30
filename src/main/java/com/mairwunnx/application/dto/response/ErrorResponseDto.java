@@ -3,10 +3,10 @@ package com.mairwunnx.application.dto.response;
 import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public record ErrorResponseDto(
-    @NonNull LocalDateTime incidentTime,
+    @NonNull ZonedDateTime incidentTime,
     @NonNull String status,
     @NonNull String path,
     @Nullable String stacktrace,

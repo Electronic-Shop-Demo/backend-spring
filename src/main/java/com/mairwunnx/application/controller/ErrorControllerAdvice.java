@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Log4j2
 @ControllerAdvice
@@ -30,7 +30,7 @@ public final class ErrorControllerAdvice {
         if (exception instanceof CodeAwareException codeAwareException) {
             return new ResponseEntity<>(
                 new ErrorResponseDto(
-                    LocalDateTime.now(),
+                    ZonedDateTime.now(),
                     codeAwareException.getStatus().toString(),
                     webRequest.getContextPath(),
                     getStacktraceOrNullIfProductionMode(codeAwareException),
