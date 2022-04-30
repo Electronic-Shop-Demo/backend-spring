@@ -32,6 +32,7 @@ mongock-spring-driver = { module = "io.mongock:mongodb-springdata-v3-driver", ve
 jooq-core = { module = "org.jooq:jooq", version.ref = "jooq" }
 jooq-meta = { module = "org.jooq:jooq-meta", version.ref = "jooq" }
 jooq-codegen = { module = "org.jooq:jooq-codegen", version.ref = "jooq" }
+jooq-pgsql = { module = "org.jooq:jooq-postgres-extensions", version.ref = "jooq" }
 
 # Database drivers
 
@@ -71,5 +72,5 @@ spring = [
 devtools = ["sp-devtools"]
 springConfigurationProcessor = ["sp-configuration-processor"]
 springTest = ["sp-starter-test", "sp-security-test"]
-jooq = ["jooq-core", "jooq-meta", "jooq-codegen"]
+jooq = ["jooq-core", "jooq-meta", "jooq-codegen", "jooq-pgsql"]
 mongock = ["mongock", "mongock-spring", "mongock-spring-driver"]
