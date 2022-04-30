@@ -3,7 +3,7 @@ package com.mairwunnx.application.entity.mongo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,8 +17,8 @@ public final class UserDocument {
     private String phone;
     private String password;
     private String fullname;
-    private ZonedDateTime creationDate;
-    private ZonedDateTime lastVisitDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime lastVisitDate;
     private UUID favorite;
     private UUID cart;
     private UUID order;
