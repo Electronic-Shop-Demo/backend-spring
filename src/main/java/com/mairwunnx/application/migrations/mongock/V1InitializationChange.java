@@ -10,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import static com.mairwunnx.application.Constants.MongoDb.Authors.PAVEL_EROKHIN;
+
 @RequiredArgsConstructor
-@ChangeUnit(id = "initialization", order = "1", author = "Pavel Erokhin")
+@ChangeUnit(id = "initialization", order = "1", author = PAVEL_EROKHIN)
 public final class V1InitializationChange {
 
     @NonNull private final MongoDatabase mongoDatabase;

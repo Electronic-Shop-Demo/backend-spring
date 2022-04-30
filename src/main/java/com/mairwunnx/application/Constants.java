@@ -68,6 +68,10 @@ public final class Constants {
             public static final String PRODUCT_IMAGES = "products_images";
             public static final String USERS = "users";
         }
+
+        public static final class Authors {
+            public static final String PAVEL_EROKHIN = "Pavel Erokhin";
+        }
     }
 
     public static final class Redis {
