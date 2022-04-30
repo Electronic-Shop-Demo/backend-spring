@@ -12,13 +12,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.ZonedDateTime;
 
 @Log4j2
 @ControllerAdvice
 @RequiredArgsConstructor
-public final class ErrorControllerAdvice {
+public final class ErrorControllerAdvice extends ResponseEntityExceptionHandler {
 
     @NonNull private final ApplicationConfig applicationConfig;
 
