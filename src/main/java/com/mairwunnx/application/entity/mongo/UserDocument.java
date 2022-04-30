@@ -6,7 +6,7 @@ import lombok.NonNull;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.jetbrains.annotations.Nullable;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,14 +14,16 @@ import java.util.UUID;
 @AllArgsConstructor
 public final class UserDocument {
 
-    @BsonId @NonNull private UUID id;
+    @BsonId
+    @NonNull
+    private UUID id;
     @Nullable private UUID avatar;
     @NonNull private String email;
     @NonNull private String phone;
     @NonNull private String password;
     @NonNull private String fullname;
-    @NonNull private LocalDateTime creationDate;
-    @NonNull private LocalDateTime lastVisitDate;
+    @NonNull private Instant creationDate;
+    @NonNull private Instant lastVisitDate;
     @NonNull private UUID favorite;
     @NonNull private UUID cart;
     @NonNull private UUID order;
