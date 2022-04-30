@@ -23,24 +23,24 @@ public final class JwtCreator {
 
     private static final Calendar CALENDAR_INSTANCE = Calendar.getInstance();
 
-    @Qualifier("jwtSigningKey") @NonNull private final RSAPrivateKey privateKey;
-    @Qualifier("jwtValidationKey") @NonNull private final RSAPublicKey publicKey;
-    @Qualifier("refreshJwtSigningKey") @NonNull private final RSAPrivateKey refreshPrivateKey;
-    @Qualifier("refreshJwtValidationKey") @NonNull private final RSAPublicKey refreshPublicKey;
+    @Qualifier("jwtSigningKey") @NonNull private final RSAPrivateKey privateAuthenticationSignKey;
+    @Qualifier("jwtValidationKey") @NonNull private final RSAPublicKey publicAuthenticationValidationKey;
+    @Qualifier("refreshJwtSigningKey") @NonNull private final RSAPrivateKey privateRefreshSignKey;
+    @Qualifier("refreshJwtValidationKey") @NonNull private final RSAPublicKey publicRefreshValidationKey;
 
     @ParametersAreNonnullByDefault
     public @NotNull String createAuthorizationJwt(final String subject, final Map<String, String> claims) {
         final var calendar = lifetimeCalendarOf(Calendar.MINUTE, 10);
         final var jwtBuilder = JWT.create().withSubject(subject);
         claims.forEach(jwtBuilder::withClaim);
-        return sing(jwtBuilder, calendar, publicKey, privateKey);
+        return sing(jwtBuilder, calendar, publicAuthenticationValidationKey, privateAuthenticationSignKey);
     }
 
     @ParametersAreNonnullByDefault
     public @NotNull String createRefreshJwt(final String subject) {
         final var calendar = lifetimeCalendarOf(Calendar.MONTH, 1);
         final var jwtBuilder = JWT.create().withSubject(subject);
-        return sing(jwtBuilder, calendar, refreshPublicKey, refreshPrivateKey);
+        return sing(jwtBuilder, calendar, publicRefreshValidationKey, privateRefreshSignKey);
     }
 
     private @NotNull Calendar lifetimeCalendarOf(final int field, final int amount) {
