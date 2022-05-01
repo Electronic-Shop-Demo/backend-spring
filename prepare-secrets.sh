@@ -19,6 +19,22 @@ function receive_secret_file_names() {
     )
 }
 
+function check_is_secrets_repo_exists() {
+    for val in "${src_file_names[@]}"; do
+        if [ -e "$val" ]; then
+            printf "\nAlright, secrets repository cloned!"
+        else
+            printf "\nOops, secrets repository not found, I'll clone this"
+            clone_secrets_repository
+        fi
+    done
+}
+
+function clone_secrets_repository() {
+    printf "\n    > Cloning secrets repository"
+    git -C ../ clone https://github.com/Electronic-Shop-Demo/misc-secrets.git
+}
+
 # shellcheck disable=SC2206
 function create_not_exist_directories() {
     printf "\nEnsuring directories exists...\n"
@@ -71,6 +87,7 @@ function add_files_to_git_ignore() {
 }
 
 receive_secret_file_names
+check_is_secrets_repo_exists
 create_not_exist_directories
 copy_secret_files
 add_files_to_git_ignore
