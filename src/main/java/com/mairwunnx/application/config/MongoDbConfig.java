@@ -48,7 +48,6 @@ public class MongoDbConfig {
         );
     }
 
-
     @Bean
     MongoClient mongoClient() {
         final var clientSettings = MongoClientSettings.builder()
