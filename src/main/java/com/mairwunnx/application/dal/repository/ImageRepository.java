@@ -15,4 +15,7 @@ public interface ImageRepository {
     @ParametersAreNonnullByDefault
     @NotNull ImageDocument insert(final ImageDocument entity);
 
+    @ParametersAreNonnullByDefault
+    @NotNull ImageDocument replaceById(final ImageDocument entity, final UUID id);
+
 }
