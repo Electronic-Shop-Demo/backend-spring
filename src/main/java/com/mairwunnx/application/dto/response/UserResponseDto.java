@@ -8,15 +8,15 @@ import java.util.UUID;
 
 public record UserResponseDto(
     @NonNull UUID id,
-    @Nullable UUID avatar,
+    @Nullable UUID avatarId,
     @NonNull String email,
     @Nullable String phone,
     @NonNull String fullname,
     @NonNull Instant creationDate,
     @NonNull Instant lastVisitDate,
-    @NonNull UUID favorite,
-    @NonNull UUID cart,
-    @NonNull UUID order,
-    @NonNull UUID userSettings,
-    boolean active
+    @NonNull UUID favoriteId,
+    @NonNull UUID cartId,
+    @NonNull UUID orderId,
+    @NonNull UUID userSettingsId,
+    boolean isUserActive
 ) {}
