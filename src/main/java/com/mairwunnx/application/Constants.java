@@ -31,6 +31,7 @@ public final class Constants {
         public static final int INTERNAL_SMS_SAVE_ERROR = 24;
         public static final int WRONG_CONFIRMATION_CODE = 25;
         public static final int USER_INCORRECT_PHONE = 26;
+        public static final int INCORRECT_CONFIRMATION_CODE = 27;
 
     }
 
@@ -71,6 +72,7 @@ public final class Constants {
         public static final int USER_NUMBER_MIN_LENGTH_THRESHOLD = 10;
         public static final int USER_NUMBER_MAX_LENGTH_THRESHOLD = 15;
         public static final String USER_NUMBER_ALLOWED_CHARS = "+()- ";
+        public static final int USER_CONFIRMATION_CODE_LENGTH = 5;
         public static final String[] DENIED_USERNAMES = {"admin", "administrator", "root"};
 
     }
