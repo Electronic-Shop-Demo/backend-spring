@@ -1,7 +1,9 @@
 package com.mairwunnx.application;
 
 public final class Constants {
+
     public static final class Errors {
+
         public static final int WTF_ERROR = -1;
         public static final int UUID_IS_INCORRECT = 1;
         public static final int ITEM_NOT_FOUND = 2;
@@ -31,50 +33,69 @@ public final class Constants {
     }
 
     public static final class Files {
+
         public static final long COMPRESSION_SIZE_THRESHOLD = 80000;
         public static final float COMPRESSION_QUALITY = 0.3f;
+
     }
 
     public static final class Api {
+
         public static final String ENDPOINT_BASE = "/api/v1";
+
     }
 
     public static final class Jwt {
+
         public static final String CLAIM_USER_ID = "userId";
         public static final String CLAIM_USER_SCOPE = "scope";
 
         public static final class Authorities {
+
             public static final String USER = "user";
             public static final String ROOT = "root";
+
         }
+
     }
 
     public static final class Validations {
+
         public static final int USERNAME_MIN_LENGTH_THRESHOLD = 3;
         public static final int USERNAME_MAX_LENGTH_THRESHOLD = 18;
         public static final int USER_PASSWORD_MIN_LENGTH_THRESHOLD = 6;
         public static final int USER_PASSWORD_MAX_LENGTH_THRESHOLD = 32;
         public static final int USER_EMAIL_MIN_LENGTH_THRESHOLD = 5;
         public static final String[] DENIED_USERNAMES = {"admin", "administrator", "root"};
+
     }
 
     public static final class MongoDb {
+
         public static final String APP = "ElectronicShop";
         public static final String ID_NAME = "_id";
         public static final String DB = "shop";
         public static final String CONNECTION_STRING_REF = "mongodb_files_db_url";
 
         public static final class Collections {
+
             public static final String PRODUCT_IMAGES = "products_images";
             public static final String USERS = "users";
+
         }
 
         public static final class Authors {
+
             public static final String PAVEL_EROKHIN = "Pavel Erokhin";
+
         }
+
     }
 
     public static final class Redis {
+
         public static final String NULL = "nil";
+
     }
+
 }
