@@ -30,6 +30,8 @@ public final class Constants {
         public static final int INTERNAL_SMS_SEND_ERROR = 23;
         public static final int INTERNAL_SMS_SAVE_ERROR = 24;
         public static final int WRONG_CONFIRMATION_CODE = 25;
+        public static final int USER_INCORRECT_PHONE = 26;
+
     }
 
     public static final class Files {
