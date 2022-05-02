@@ -20,7 +20,7 @@ import java.util.UUID;
 @Component
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public final class UserServiceImpl implements UserService {
 
     private final UserRepository usersRepository;
 
