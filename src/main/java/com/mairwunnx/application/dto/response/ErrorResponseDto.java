@@ -11,5 +11,4 @@ public record ErrorResponseDto(
     @NonNull String path,
     @Nullable String stacktrace,
     int code
-) {
-}
+) {}
