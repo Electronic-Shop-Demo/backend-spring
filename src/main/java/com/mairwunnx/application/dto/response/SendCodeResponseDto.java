@@ -4,6 +4,4 @@ import lombok.NonNull;
 
 import java.util.UUID;
 
-public record SendCodeResponseDto(@NonNull UUID session) {
-
-}
+public record SendCodeResponseDto(@NonNull UUID session) {}
