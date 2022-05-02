@@ -13,7 +13,7 @@ public interface UserRepository {
     @Nullable UserDocument findByEmail(final String email);
 
     @ParametersAreNonnullByDefault
-    @Nullable UserDocument findById(final String email);
+    @Nullable UserDocument findById(final UUID id);
 
     @ParametersAreNonnullByDefault
     boolean isExistByEmail(final String email);
