@@ -16,7 +16,4 @@ public interface ImageMapper {
     @ParametersAreNonnullByDefault
     @NotNull ImageDto entityToDto(final ImageDocument entity);
 
-    @ParametersAreNonnullByDefault
-    @NotNull ImageDocument dtoToEntity(final ImageDto entity);
-
 }
