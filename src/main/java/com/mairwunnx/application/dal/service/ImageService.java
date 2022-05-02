@@ -1,6 +1,6 @@
 package com.mairwunnx.application.dal.service;
 
-import com.mairwunnx.application.entity.mongo.ImageDocument;
+import com.mairwunnx.application.dto.response.ImageDto;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,9 +13,9 @@ public interface ImageService {
     byte[] getImageById(final UUID id);
 
     @ParametersAreNonnullByDefault
-    @NotNull ImageDocument insert(final MultipartFile file);
+    @NotNull ImageDto insert(final MultipartFile file);
 
     @ParametersAreNonnullByDefault
-    @NotNull ImageDocument replaceById(final MultipartFile file, final UUID id);
+    @NotNull ImageDto replaceById(final MultipartFile file, final UUID id);
 
 }
