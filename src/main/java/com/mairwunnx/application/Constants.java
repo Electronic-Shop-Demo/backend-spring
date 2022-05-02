@@ -55,8 +55,11 @@ public final class Constants {
 
         public static final class Authorities {
 
-            public static final String USER = "user";
-            public static final String ROOT = "root";
+            public static final String AUTHORITY_PREFIX = "SCOPE_";
+            public static final String AUTHENTICATED_USER = AUTHORITY_PREFIX + "au";
+            public static final String CONFIRMED_USER = AUTHORITY_PREFIX + "cu";
+            public static final String PRODUCT_MANAGER = AUTHORITY_PREFIX + "pm";
+            public static final String ROOT = AUTHORITY_PREFIX + "root";
 
         }
 
