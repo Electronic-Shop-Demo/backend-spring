@@ -13,6 +13,9 @@ public interface ImageService {
     byte[] getImageById(final UUID id);
 
     @ParametersAreNonnullByDefault
-    @NotNull ImageDocument insertImage(final MultipartFile file);
+    @NotNull ImageDocument insert(final MultipartFile file);
+
+    @ParametersAreNonnullByDefault
+    @NotNull ImageDocument replaceById(final MultipartFile file, final UUID id);
 
 }
