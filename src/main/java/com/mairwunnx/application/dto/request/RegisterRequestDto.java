@@ -7,6 +7,4 @@ public record RegisterRequestDto(
     @NonNull String password,
     @NonNull String phone,
     @NonNull String email
-) {
-
-}
+) {}
