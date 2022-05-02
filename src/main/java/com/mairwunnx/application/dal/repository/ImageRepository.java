@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface ImageRepository {
 
     @ParametersAreNonnullByDefault
-    @Nullable ImageDocument findOneById(final UUID uuid);
+    @Nullable ImageDocument findOneById(final UUID id);
 
     @ParametersAreNonnullByDefault
     @NotNull ImageDocument insert(final ImageDocument entity);
