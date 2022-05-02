@@ -68,6 +68,8 @@ public final class Constants {
         public static final int USER_PASSWORD_MIN_LENGTH_THRESHOLD = 6;
         public static final int USER_PASSWORD_MAX_LENGTH_THRESHOLD = 32;
         public static final int USER_EMAIL_MIN_LENGTH_THRESHOLD = 5;
+        public static final int USER_NUMBER_MIN_LENGTH_THRESHOLD = 10;
+        public static final int USER_NUMBER_MAX_LENGTH_THRESHOLD = 15;
         public static final String[] DENIED_USERNAMES = {"admin", "administrator", "root"};
 
     }
