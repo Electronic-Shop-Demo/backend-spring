@@ -8,7 +8,7 @@ import java.net.http.HttpClient;
 import java.time.Duration;
 
 @Configuration
-public class HttpClientConfiguration {
+public class HttpClientConfig {
 
     @Bean
     @NotNull
