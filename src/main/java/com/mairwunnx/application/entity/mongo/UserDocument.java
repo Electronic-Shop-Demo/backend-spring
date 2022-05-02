@@ -14,12 +14,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public final class UserDocument {
 
-    @BsonId
-    @NonNull
-    private UUID id;
+    @BsonId @NonNull private UUID id;
     @Nullable private UUID avatar;
     @NonNull private String email;
-    @NonNull private String phone;
+    @Nullable private String phone;
     @NonNull private String password;
     @NonNull private String fullname;
     @NonNull private Instant creationDate;
