@@ -53,6 +53,7 @@ public class MongoDbConfig {
         final var clientSettings = MongoClientSettings.builder()
             .applicationName(Constants.MongoDb.APP)
             .applyConnectionString(mongoConnectionString())
+            .retryReads(true)
             .uuidRepresentation(UuidRepresentation.STANDARD)
             .codecRegistry(pojoCodecRegistry())
             .applyToSslSettings(builder -> {
