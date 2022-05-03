@@ -11,7 +11,7 @@ auth0-jwt = "3.19.1"
 jedis = "4.2.2"
 mongodb-driver = "4.6.0"
 jooq = "3.17.0-SNAPSHOT"
-mongock = "5.0.36"
+mongock = "5.1.0"
 
 [libraries]
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrains-annotations" }
