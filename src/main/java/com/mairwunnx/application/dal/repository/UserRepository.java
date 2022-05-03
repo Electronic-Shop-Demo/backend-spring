@@ -22,6 +22,9 @@ public interface UserRepository {
     @NotNull UserDocument insert(final UserDocument entity);
 
     @ParametersAreNonnullByDefault
+    void removeById(final UUID id);
+
+    @ParametersAreNonnullByDefault
     void updateRefreshTokenByEmail(final String email, final String refreshToken);
 
     @ParametersAreNonnullByDefault
