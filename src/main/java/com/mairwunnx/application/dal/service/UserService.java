@@ -15,4 +15,7 @@ public interface UserService extends UserDetailsService {
     @ParametersAreNonnullByDefault
     @NotNull UserResponseDto loadById(final UUID id);
 
+    @ParametersAreNonnullByDefault
+    void removeById(final UUID id);
+
 }
