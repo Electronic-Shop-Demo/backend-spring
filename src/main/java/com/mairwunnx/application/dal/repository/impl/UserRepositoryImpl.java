@@ -52,6 +52,12 @@ public final class UserRepositoryImpl implements UserRepository {
 
     @Override
     @ParametersAreNonnullByDefault
+    public void removeById(final UUID id) {
+        usersCollection.deleteOne(eq(Constants.MongoDb.ID_NAME, id));
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
     public void updateRefreshTokenByEmail(final String email, final String refreshToken) {
         usersCollection.findOneAndUpdate(
             eq("email", email),
