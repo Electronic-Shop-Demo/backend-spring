@@ -54,4 +54,10 @@ public final class UserServiceImpl implements UserService {
         throw new CodeAwareException(Constants.Errors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
 
+    @Override
+    @ParametersAreNonnullByDefault
+    public void removeById(final UUID id) {
+        usersRepository.removeById(id);
+    }
+
 }
