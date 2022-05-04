@@ -1,13 +1,17 @@
 package com.mairwunnx.application.dal.repository;
 
 import com.mairwunnx.application.entity.mongo.UserDocument;
+import com.mairwunnx.application.types.UsersSortVariant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 import java.util.UUID;
 
 public interface UserRepository {
+
+    @NotNull List<UserDocument> getAll(final int page, @Nullable final UsersSortVariant sort);
 
     @ParametersAreNonnullByDefault
     @Nullable UserDocument findByEmail(final String email);
