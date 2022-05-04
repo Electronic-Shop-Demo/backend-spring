@@ -9,6 +9,7 @@ import com.mairwunnx.application.dto.response.UsersResponseDto;
 import com.mairwunnx.application.exception.CodeAwareException;
 import com.mairwunnx.application.mapper.SpringUserMapper;
 import com.mairwunnx.application.mapper.UserMapper;
+import com.mairwunnx.application.mapper.UsersMapper;
 import com.mairwunnx.application.types.UsersSortVariant;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,9 @@ public final class UserServiceImpl implements UserService {
 
     @Override
     public @NotNull UsersResponseDto getUsers(final int page, @Nullable final UsersSortVariant sort) {
-        return null;
+        final var users = usersRepository.getAll(page, sort);
+        final var lastPage = users.size() / Constants.Pagination.USERS_PER_PAGE;
+        return UsersMapper.INSTANCE.entityToDto(page, lastPage, users, sort);
     }
 
     @Override
