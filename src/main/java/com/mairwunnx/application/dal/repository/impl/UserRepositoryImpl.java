@@ -64,12 +64,6 @@ public final class UserRepositoryImpl implements UserRepository {
 
     @Override
     @ParametersAreNonnullByDefault
-    public boolean isExistByEmail(final String email) {
-        return usersCollection.countDocuments(eq("email", email)) != 0;
-    }
-
-    @Override
-    @ParametersAreNonnullByDefault
     public @NotNull UserDocument insert(final UserDocument entity) {
         usersCollection.insertOne(entity);
         return entity;

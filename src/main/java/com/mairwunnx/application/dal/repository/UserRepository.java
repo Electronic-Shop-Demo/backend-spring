@@ -22,9 +22,6 @@ public interface UserRepository {
     @Nullable UserDocument findById(final UUID id);
 
     @ParametersAreNonnullByDefault
-    boolean isExistByEmail(final String email);
-
-    @ParametersAreNonnullByDefault
     @NotNull UserDocument insert(final UserDocument entity);
 
     @ParametersAreNonnullByDefault
