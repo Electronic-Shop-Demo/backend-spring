@@ -1,8 +1,8 @@
 package com.mairwunnx.application.dal.service;
 
-import com.mairwunnx.application.dto.response.UsersResponseDto;
 import com.mairwunnx.application.dto.response.RestorePasswordResponseDto;
 import com.mairwunnx.application.dto.response.UserResponseDto;
+import com.mairwunnx.application.dto.response.UsersResponseDto;
 import com.mairwunnx.application.types.UsersSortVariant;
 import lombok.NonNull;
 import org.jetbrains.annotations.NotNull;
