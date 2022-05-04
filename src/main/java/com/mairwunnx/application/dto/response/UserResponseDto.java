@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 public record UserResponseDto(
@@ -18,5 +19,6 @@ public record UserResponseDto(
     @NonNull UUID cartId,
     @NonNull UUID orderId,
     @NonNull UUID userSettingsId,
+    @NonNull List<String> authorities,
     boolean isUserActive
 ) {}
