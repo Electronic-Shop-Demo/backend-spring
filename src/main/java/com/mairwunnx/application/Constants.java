@@ -102,6 +102,12 @@ public final class Constants {
 
     }
 
+    public static final class Pagination {
+
+        public static final int USERS_PER_PAGE = 20;
+
+    }
+
     public static final class Redis {
 
         public static final String NULL = "nil";
