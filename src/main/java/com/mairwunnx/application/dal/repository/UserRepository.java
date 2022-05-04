@@ -1,9 +1,11 @@
 package com.mairwunnx.application.dal.repository;
 
+import com.mairwunnx.application.dto.response.UserResponseDto;
 import com.mairwunnx.application.entity.mongo.UserDocument;
 import com.mairwunnx.application.types.UsersSortVariant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -20,6 +22,9 @@ public interface UserRepository {
 
     @ParametersAreNonnullByDefault
     @Nullable UserDocument findById(final UUID id);
+
+    @ParametersAreNonnullByDefault
+    @NotNull UserDocument changeAvatar(final UUID id, final UUID imageId);
 
     @ParametersAreNonnullByDefault
     @NotNull UserDocument insert(final UserDocument entity);
