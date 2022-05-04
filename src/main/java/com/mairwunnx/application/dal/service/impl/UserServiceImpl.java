@@ -2,6 +2,7 @@ package com.mairwunnx.application.dal.service.impl;
 
 import com.mairwunnx.application.Constants;
 import com.mairwunnx.application.dal.repository.UserRepository;
+import com.mairwunnx.application.dal.service.ImageService;
 import com.mairwunnx.application.dal.service.UserService;
 import com.mairwunnx.application.dto.response.RestorePasswordResponseDto;
 import com.mairwunnx.application.dto.response.UserResponseDto;
@@ -30,6 +31,7 @@ import java.util.UUID;
 public final class UserServiceImpl implements UserService {
 
     private final UserRepository usersRepository;
+    private final ImageService imageService;
 
     @Override
     @ParametersAreNonnullByDefault
@@ -78,7 +80,19 @@ public final class UserServiceImpl implements UserService {
     @Override
     @ParametersAreNonnullByDefault
     public @NotNull UserResponseDto changeAvatar(final UUID id, final MultipartFile file) {
-        return null;
+        final var user = usersRepository.findById(id);
+
+        if (user != null) {
+            if (user.getAvatar() != null) {
+                imageService.replaceById(file, user.getAvatar());
+            } else {
+                final var image = imageService.insert(file);
+                return UserMapper.INSTANCE.entityToDto(usersRepository.changeAvatar(id, image.id()));
+            }
+            return UserMapper.INSTANCE.entityToDto(user);
+        }
+
+        throw new CodeAwareException(Constants.Errors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
 
     @Override
