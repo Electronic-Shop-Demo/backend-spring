@@ -1,11 +1,9 @@
 package com.mairwunnx.application.dal.repository;
 
-import com.mairwunnx.application.dto.response.UserResponseDto;
 import com.mairwunnx.application.entity.mongo.UserDocument;
 import com.mairwunnx.application.types.UsersSortVariant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
