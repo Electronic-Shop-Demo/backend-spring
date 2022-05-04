@@ -50,7 +50,9 @@ public final class UserServiceImpl implements UserService {
 
     @Override
     public @NotNull UsersResponseDto getBlockedUsers(final int page, @Nullable final UsersSortVariant sort) {
-        return null;
+        final var users = usersRepository.getInactiveUsers(page, sort);
+        final var lastPage = users.size() / Constants.Pagination.USERS_PER_PAGE;
+        return UsersMapper.INSTANCE.entityToDto(page, lastPage, users, sort);
     }
 
     @Override
