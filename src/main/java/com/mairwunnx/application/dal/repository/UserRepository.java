@@ -13,6 +13,8 @@ public interface UserRepository {
 
     @NotNull List<UserDocument> getAll(final int page, @Nullable final UsersSortVariant sort);
 
+    @NotNull List<UserDocument> getInactiveUsers(final int page, @Nullable final UsersSortVariant sort);
+
     @ParametersAreNonnullByDefault
     @Nullable UserDocument findByEmail(final String email);
 
