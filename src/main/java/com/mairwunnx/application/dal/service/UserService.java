@@ -15,9 +15,9 @@ import java.util.UUID;
 
 public interface UserService extends UserDetailsService {
 
-    @NonNull UsersResponseDto getUsers(final int page, @Nullable UsersSortVariant sort);
+    @NotNull UsersResponseDto getUsers(final int page, @Nullable UsersSortVariant sort);
 
-    @NonNull UsersResponseDto getBlockedUsers(final int page, @Nullable UsersSortVariant sort);
+    @NotNull UsersResponseDto getBlockedUsers(final int page, @Nullable UsersSortVariant sort);
 
     @ParametersAreNonnullByDefault
     @NotNull UserResponseDto getUser(final String email);
