@@ -3,17 +3,23 @@ package com.mairwunnx.application.dal.repository.impl;
 import com.mairwunnx.application.Constants;
 import com.mairwunnx.application.dal.repository.UserRepository;
 import com.mairwunnx.application.entity.mongo.UserDocument;
+import com.mairwunnx.application.types.UsersSortVariant;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Collation;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.Sorts;
 import lombok.RequiredArgsConstructor;
+import org.bson.conversions.Bson;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -24,6 +30,25 @@ public final class UserRepositoryImpl implements UserRepository {
 
     private final MongoCollection<UserDocument> usersCollection;
     @Qualifier("insensitiveCollation") private final Collation insensitiveCollation;
+
+    @Override
+    public @NotNull List<UserDocument> getAll(final int page, @Nullable final UsersSortVariant sort) {
+        return usersCollection.find()
+            .sort(sort(sort))
+            .skip(Constants.Pagination.USERS_PER_PAGE * (page - 1))
+            .limit(Constants.Pagination.USERS_PER_PAGE)
+            .into(new ArrayList<>());
+    }
+
+    @Override
+    public @NotNull List<UserDocument> getInactiveUsers(final int page, @Nullable final UsersSortVariant sort) {
+        return usersCollection.find()
+            .sort(sort(sort))
+            .filter(eq("active", false))
+            .skip(Constants.Pagination.USERS_PER_PAGE * (page - 1))
+            .limit(Constants.Pagination.USERS_PER_PAGE)
+            .into(new ArrayList<>());
+    }
 
     @Override
     @ParametersAreNonnullByDefault
@@ -89,6 +114,20 @@ public final class UserRepositoryImpl implements UserRepository {
             eq(Constants.MongoDb.ID_NAME, id),
             new BasicDBObject("$pull", new BasicDBObject("refreshTokens", refreshToken))
         );
+    }
+
+    @Contract("null -> null")
+    @ParametersAreNonnullByDefault
+    private @Nullable Bson sort(@Nullable final UsersSortVariant sort) {
+        return switch (sort) {
+            case EMAIL_ASC -> Sorts.ascending("email");
+            case EMAIL_DESC -> Sorts.descending("email");
+            case FULLNAME_ASC -> Sorts.ascending("fullname");
+            case FULLNAME_DESC -> Sorts.descending("fullname");
+            case CREATION_DATE_ASC -> Sorts.ascending("creationDate");
+            case CREATION_DATE_DESC -> Sorts.descending("creationDate");
+            case null -> null;
+        };
     }
 
 }
