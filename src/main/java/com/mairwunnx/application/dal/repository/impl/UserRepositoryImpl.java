@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Collation;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.Sorts;
+import com.mongodb.client.model.Updates;
 import lombok.RequiredArgsConstructor;
 import org.bson.conversions.Bson;
 import org.jetbrains.annotations.Contract;
@@ -60,6 +61,15 @@ public final class UserRepositoryImpl implements UserRepository {
     @ParametersAreNonnullByDefault
     public @Nullable UserDocument findById(final UUID id) {
         return usersCollection.find(eq(Constants.MongoDb.ID_NAME, id)).first();
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
+    public @NotNull UserDocument changeAvatar(final UUID id, final UUID imageId) {
+        return usersCollection.updateOne( // todo: fix it tomorrow
+            eq(Constants.MongoDb.ID_NAME, id),
+            Updates.set("avatar", imageId)
+        );
     }
 
     @Override
