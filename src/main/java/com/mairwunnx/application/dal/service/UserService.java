@@ -33,6 +33,12 @@ public interface UserService extends UserDetailsService {
     @NotNull UserResponseDto changeEmail(final UUID id, final String email);
 
     @ParametersAreNonnullByDefault
+    @NonNull ChangePhoneResponseDto requestChangePhone(UUID id, String phone);
+
+    @ParametersAreNonnullByDefault
+    @NonNull UserResponseDto confirmChangePhone(UUID id, UUID session, UUID code);
+
+    @ParametersAreNonnullByDefault
     @NotNull UserResponseDto changePassword(final UUID id, final String oldPwd, final String newPwd);
 
     @ParametersAreNonnullByDefault
