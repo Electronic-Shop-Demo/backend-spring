@@ -104,7 +104,19 @@ public final class UserServiceImpl implements UserService {
     @Override
     @ParametersAreNonnullByDefault
     public @NotNull UserResponseDto changeEmail(final UUID id, final String email) {
-        return null;
+        final var user = usersRepository.findById(id);
+
+        if (user != null) {
+            final var entity = usersRepository.changeEmail(user.getId(), email);
+
+            if (entity == null) {
+                throw new CodeAwareException(Constants.Errors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
+            } else {
+                return UserMapper.INSTANCE.entityToDto(entity);
+            }
+        }
+
+        throw new CodeAwareException(Constants.Errors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
 
     @Override
