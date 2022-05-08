@@ -87,7 +87,13 @@ public final class UserServiceImpl implements UserService {
                 imageService.replaceById(file, user.getAvatar());
             } else {
                 final var image = imageService.insert(file);
-                return UserMapper.INSTANCE.entityToDto(usersRepository.changeAvatar(id, image.id()));
+                final var entity = usersRepository.changeAvatar(user.getId(), image.id());
+
+                if (entity == null) {
+                    throw new CodeAwareException(Constants.Errors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
+                } else {
+                    return UserMapper.INSTANCE.entityToDto(entity);
+                }
             }
             return UserMapper.INSTANCE.entityToDto(user);
         }
