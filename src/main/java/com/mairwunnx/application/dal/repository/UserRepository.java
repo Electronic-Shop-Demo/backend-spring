@@ -28,6 +28,9 @@ public interface UserRepository {
     @Nullable UserDocument changeEmail(final UUID id, final String email);
 
     @ParametersAreNonnullByDefault
+    @Nullable UserDocument changePhone(final UUID id, final String phone);
+
+    @ParametersAreNonnullByDefault
     @NotNull UserDocument insert(final UserDocument entity);
 
     @ParametersAreNonnullByDefault
