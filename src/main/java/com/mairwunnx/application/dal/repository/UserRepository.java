@@ -25,6 +25,9 @@ public interface UserRepository {
     @Nullable UserDocument changeAvatar(final UUID id, final UUID imageId);
 
     @ParametersAreNonnullByDefault
+    @Nullable UserDocument changeEmail(final UUID id, final String email);
+
+    @ParametersAreNonnullByDefault
     @NotNull UserDocument insert(final UserDocument entity);
 
     @ParametersAreNonnullByDefault
