@@ -65,8 +65,8 @@ public final class UserRepositoryImpl implements UserRepository {
 
     @Override
     @ParametersAreNonnullByDefault
-    public @NotNull UserDocument changeAvatar(final UUID id, final UUID imageId) {
-        return usersCollection.updateOne( // todo: fix it tomorrow
+    public @Nullable UserDocument changeAvatar(final UUID id, final UUID imageId) {
+        return usersCollection.findOneAndUpdate(
             eq(Constants.MongoDb.ID_NAME, id),
             Updates.set("avatar", imageId)
         );
