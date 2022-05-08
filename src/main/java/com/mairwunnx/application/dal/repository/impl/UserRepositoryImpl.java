@@ -74,6 +74,15 @@ public final class UserRepositoryImpl implements UserRepository {
 
     @Override
     @ParametersAreNonnullByDefault
+    public @Nullable UserDocument changeEmail(final UUID id, final String email) {
+        return usersCollection.findOneAndUpdate(
+            eq(Constants.MongoDb.ID_NAME, id),
+            Updates.set("email", email)
+        );
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
     public @NotNull UserDocument insert(final UserDocument entity) {
         usersCollection.insertOne(entity);
         return entity;
