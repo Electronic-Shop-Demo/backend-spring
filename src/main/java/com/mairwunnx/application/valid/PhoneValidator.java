@@ -2,14 +2,15 @@ package com.mairwunnx.application.valid;
 
 import com.mairwunnx.application.Constants;
 import com.mairwunnx.application.exception.CodeAwareException;
+import com.mairwunnx.application.utils.PhoneUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import static com.mairwunnx.application.Constants.Validations.*;
+import static com.mairwunnx.application.Constants.Validations.USER_NUMBER_MAX_LENGTH_THRESHOLD;
+import static com.mairwunnx.application.Constants.Validations.USER_NUMBER_MIN_LENGTH_THRESHOLD;
 
 @Component
 public final class PhoneValidator implements ValidatorBase<String> {
@@ -21,7 +22,7 @@ public final class PhoneValidator implements ValidatorBase<String> {
             throw new CodeAwareException(Constants.Errors.USER_INCORRECT_PHONE, HttpStatus.BAD_REQUEST);
         }
 
-        final var trimmedCandidate = trimPhone(candidate);
+        final var trimmedCandidate = PhoneUtils.trimPhone(candidate);
         if (isValidNumberLength(trimmedCandidate)) {
             throw new CodeAwareException(Constants.Errors.USER_INCORRECT_PHONE, HttpStatus.BAD_REQUEST);
         }
@@ -29,11 +30,6 @@ public final class PhoneValidator implements ValidatorBase<String> {
         if (isArabicNumeric(trimmedCandidate)) {
             throw new CodeAwareException(Constants.Errors.USER_INCORRECT_PHONE, HttpStatus.BAD_REQUEST);
         }
-    }
-
-    @ParametersAreNonnullByDefault
-    private @NotNull String trimPhone(final String candidate) {
-        return StringUtils.replaceChars(candidate, USER_NUMBER_ALLOWED_CHARS, "");
     }
 
     @ParametersAreNonnullByDefault
