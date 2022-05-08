@@ -1,5 +1,6 @@
 package com.mairwunnx.application.dal.service;
 
+import com.mairwunnx.application.dto.response.ChangePhoneResponseDto;
 import com.mairwunnx.application.dto.response.RestorePasswordResponseDto;
 import com.mairwunnx.application.dto.response.UserResponseDto;
 import com.mairwunnx.application.dto.response.UsersResponseDto;
@@ -30,9 +31,6 @@ public interface UserService extends UserDetailsService {
 
     @ParametersAreNonnullByDefault
     @NotNull UserResponseDto changeEmail(final UUID id, final String email);
-
-    @ParametersAreNonnullByDefault
-    @NotNull UserResponseDto changePhone(final UUID id, final String phone);
 
     @ParametersAreNonnullByDefault
     @NotNull UserResponseDto changePassword(final UUID id, final String oldPwd, final String newPwd);
