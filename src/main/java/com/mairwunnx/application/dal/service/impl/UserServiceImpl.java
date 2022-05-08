@@ -121,7 +121,13 @@ public final class UserServiceImpl implements UserService {
 
     @Override
     @ParametersAreNonnullByDefault
-    public @NotNull UserResponseDto changePhone(final UUID id, final String phone) {
+    public @NonNull ChangePhoneResponseDto requestChangePhone(final UUID id, final String phone) {
+        return null;
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
+    public @NonNull UserResponseDto confirmChangePhone(final UUID id, final UUID session, final UUID code) {
         return null;
     }
 
