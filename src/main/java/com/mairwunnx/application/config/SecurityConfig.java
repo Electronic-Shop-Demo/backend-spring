@@ -33,7 +33,6 @@ public class SecurityConfig {
             .csrf().disable().cors().disable()
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/register").not().hasAuthority(AUTHENTICATED_USER).and()
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/logout").hasAuthority(AUTHENTICATED_USER).and()
-            .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/refresh").hasAuthority(AUTHENTICATED_USER).and()
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/**").permitAll().and()
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/confirm/**").not().hasAuthority(CONFIRMED_USER).and()
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
