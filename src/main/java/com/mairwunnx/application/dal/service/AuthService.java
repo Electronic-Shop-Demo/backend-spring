@@ -14,7 +14,12 @@ public interface AuthService {
     @NotNull LoginResponseDto login(final String email, final String password);
 
     @ParametersAreNonnullByDefault
-    @NotNull RegisterResponseDto register(final String username, final String password, final String email);
+    @NotNull RegisterResponseDto register(
+        final String username,
+        final String password,
+        final String phone,
+        final String email
+    );
 
     @ParametersAreNonnullByDefault
     @NotNull RefreshResponseDto refresh(final String email, final String refreshToken);
