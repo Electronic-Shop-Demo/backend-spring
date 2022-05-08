@@ -17,6 +17,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import static com.mairwunnx.application.Constants.Api.ENDPOINT_BASE;
 import static com.mairwunnx.application.Constants.Jwt.Authorities.AUTHENTICATED_USER;
+import static com.mairwunnx.application.Constants.Jwt.Authorities.CONFIRMED_USER;
 
 @Configuration
 @EnableWebSecurity
@@ -34,7 +35,7 @@ public class SecurityConfig {
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/logout").hasAuthority(AUTHENTICATED_USER).and()
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/refresh").hasAuthority(AUTHENTICATED_USER).and()
             .authorizeRequests().antMatchers(ENDPOINT_BASE + "/auth/**").permitAll().and()
-            .authorizeRequests().antMatchers(ENDPOINT_BASE + "/confirm/**").hasAuthority(AUTHENTICATED_USER).and()
+            .authorizeRequests().antMatchers(ENDPOINT_BASE + "/confirm/**").not().hasAuthority(CONFIRMED_USER).and()
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
     }
