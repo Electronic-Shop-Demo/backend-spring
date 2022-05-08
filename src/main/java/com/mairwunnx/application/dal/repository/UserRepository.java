@@ -22,7 +22,7 @@ public interface UserRepository {
     @Nullable UserDocument findById(final UUID id);
 
     @ParametersAreNonnullByDefault
-    @NotNull UserDocument changeAvatar(final UUID id, final UUID imageId);
+    @Nullable UserDocument changeAvatar(final UUID id, final UUID imageId);
 
     @ParametersAreNonnullByDefault
     @NotNull UserDocument insert(final UserDocument entity);
