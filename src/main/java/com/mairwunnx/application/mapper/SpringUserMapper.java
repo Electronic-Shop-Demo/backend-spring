@@ -21,7 +21,6 @@ public interface SpringUserMapper {
     @ParametersAreNonnullByDefault
     @NotNull SpringSecurityUser entityToDto(final UserDocument entity);
 
-    @Mapping(target = "id")
     @Mapping(target = "avatar")
     @Mapping(target = "phone")
     @Mapping(target = "fullname")
