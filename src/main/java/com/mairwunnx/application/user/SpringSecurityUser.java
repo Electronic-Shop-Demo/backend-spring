@@ -9,11 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
 public final class SpringSecurityUser implements UserDetails {
 
+    @NonNull private UUID id;
     @NonNull private String email;
     @NonNull private String password;
     @NonNull private Collection<? extends GrantedAuthority> authorities;
