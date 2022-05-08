@@ -2,12 +2,14 @@ package com.mairwunnx.application.controller;
 
 import com.mairwunnx.application.annotations.ApiStage;
 import com.mairwunnx.application.annotations.type.ApiStageType;
+import com.mairwunnx.application.dal.service.AuthService;
 import com.mairwunnx.application.dto.request.LoginRequestDto;
 import com.mairwunnx.application.dto.request.LogoutRequestDto;
 import com.mairwunnx.application.dto.request.RefreshRequestDto;
 import com.mairwunnx.application.dto.request.RegisterRequestDto;
 import com.mairwunnx.application.dto.response.LoginResponseDto;
 import com.mairwunnx.application.dto.response.RefreshResponseDto;
+import com.mairwunnx.application.dto.response.RegisterResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
@@ -28,25 +30,27 @@ public final class AuthController {
 
     private static final String END_POINT = ENDPOINT_BASE + "/auth/";
 
+    private final AuthService authService;
+
     @PostMapping(END_POINT + "login")
     @ResponseBody
     @ParametersAreNonnullByDefault
     public @NotNull LoginResponseDto login(@RequestBody final LoginRequestDto body) {
-        throw new IllegalStateException("Not implemented yet");
+        return authService.login(body.email(), body.password());
     }
 
     @PostMapping(END_POINT + "register")
     @ResponseBody
     @ParametersAreNonnullByDefault
-    public void register(@RequestBody final RegisterRequestDto body) {
-        throw new IllegalStateException("Not implemented yet");
+    public @NotNull RegisterResponseDto register(@RequestBody final RegisterRequestDto body) {
+        return authService.register(body.username(), body.password(), body.phone(), body.email());
     }
 
     @PostMapping(END_POINT + "refresh")
     @ResponseBody
     @ParametersAreNonnullByDefault
     public @NotNull RefreshResponseDto refresh(@RequestBody final RefreshRequestDto body) {
-        throw new IllegalStateException("Not implemented yet");
+        return authService.refresh(body.email(), body.refreshToken());
     }
 
     @PostMapping(END_POINT + "logout")
@@ -56,7 +60,7 @@ public final class AuthController {
         @CurrentSecurityContext final SecurityContext context,
         @RequestBody final LogoutRequestDto body
     ) {
-        throw new IllegalStateException("Not implemented yet");
+        authService.logout(context, body.refreshToken());
     }
 
 }
