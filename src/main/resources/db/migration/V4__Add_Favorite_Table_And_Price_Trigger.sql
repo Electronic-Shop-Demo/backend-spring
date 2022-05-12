@@ -31,13 +31,13 @@ declare
     table_record record;
     total        float(2) = 0;
 begin
-    FOR i IN 1 .. array_upper(new_items, 1)
-        LOOP
+    for i in 1 .. array_upper(new_items, 1)
+        loop
             for table_record in select price from public.items where public.items.id = new_items[i]
                 loop
                     total = total + table_record.price;
                 end loop;
-        END LOOP;
+        end loop;
 
     return total;
 end;
