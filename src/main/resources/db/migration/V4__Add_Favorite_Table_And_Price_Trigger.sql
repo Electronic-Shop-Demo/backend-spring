@@ -33,7 +33,7 @@ declare
 begin
     for i in 1 .. array_upper(new_items, 1)
         loop
-            for table_record in select price from public.items where public.items.id = new_items[i]
+            for table_record in select price from items where items.id = new_items[i]
                 loop
                     total = total + table_record.price;
                 end loop;
