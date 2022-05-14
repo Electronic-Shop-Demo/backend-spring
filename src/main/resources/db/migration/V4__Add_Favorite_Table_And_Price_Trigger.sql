@@ -1,11 +1,11 @@
 create table if not exists public.favorites
 (
-    id    uuid                                                                          not null
+    id    uuid                                                         not null
         constraint favorites_pk
             primary key,
-    items uuid[]                                                                        not null,
-    count smallint generated always as (array_length(public.favorites.items, 1)) stored not null,
-    sum   float(2)                                                                      not null default 0.0
+    items uuid[]                                                       not null,
+    count smallint generated always as (array_length(items, 1)) stored not null,
+    sum   float(2)                                                     not null default 0.0
 );
 
 create trigger on_favorite_items_trigger
