@@ -1,6 +1,6 @@
 create table if not exists public.favorites
 (
-    id    uuid                                                         not null
+    id    uuid                                                         not null default gen_random_uuid()
         constraint favorites_pk
             primary key,
     items uuid[]                                                       not null,
