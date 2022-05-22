@@ -15,7 +15,7 @@ public final class Constants {
         public static final int UNSUPPORTED_IMAGE_EXTENSION = 8;
         public static final int IMAGE_NOT_FOUND = 9;
         public static final int USER_NOT_FOUND = 10;
-        public static final int INCORRECT_PASSWORD = 11;
+        public static final int WRONG_PASSWORD = 11;
         public static final int USER_REGISTERED = 12;
         public static final int USER_INCORRECT_NAME = 13;
         public static final int USER_INCORRECT_PASSWORD = 14;

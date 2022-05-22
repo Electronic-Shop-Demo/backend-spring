@@ -1,7 +1,6 @@
 package com.mairwunnx.application.dal.service.impl;
 
 import com.mairwunnx.application.Constants;
-import com.mairwunnx.application.cache.UUIDCache;
 import com.mairwunnx.application.dal.repository.UserRepository;
 import com.mairwunnx.application.dal.service.AuthService;
 import com.mairwunnx.application.dto.response.LoginResponseDto;
@@ -11,7 +10,6 @@ import com.mairwunnx.application.entity.mongo.UserDocument;
 import com.mairwunnx.application.exception.CodeAwareException;
 import com.mairwunnx.application.jwt.JwtCreator;
 import com.mairwunnx.application.mapper.RegisteredUserMapper;
-import com.mairwunnx.application.mapper.UserMapper;
 import com.mairwunnx.application.user.SpringSecurityUser;
 import com.mairwunnx.application.utils.PhoneUtils;
 import com.mairwunnx.application.valid.EmailValidator;
@@ -58,7 +56,6 @@ public final class AuthServiceImpl implements AuthService {
     private final @NonNull PasswordValidator passwordValidator;
     private final @NonNull PhoneValidator phoneValidator;
     private final @NonNull EmailValidator emailValidator;
-    private final @NonNull UUIDCache uuidCache;
 
     @Override
     @ParametersAreNonnullByDefault
@@ -81,7 +78,7 @@ public final class AuthServiceImpl implements AuthService {
             return new LoginResponseDto(jwtCreator.createAuthorizationJwt(trimmedEmail, claims), refreshToken);
         }
 
-        throw new CodeAwareException(Constants.Errors.INCORRECT_PASSWORD, HttpStatus.UNAUTHORIZED);
+        throw new CodeAwareException(Constants.Errors.WRONG_PASSWORD, HttpStatus.UNAUTHORIZED);
     }
 
     @Override
@@ -105,17 +102,22 @@ public final class AuthServiceImpl implements AuthService {
         phoneValidator.validate(trimmedPhone);
         emailValidator.validate(trimmedEmail);
 
-        final var normalizedPhone = PhoneUtils.trimPhone(trimmedPhone);
+        final var clearedPhone = PhoneUtils.clear(trimmedPhone);
 
         if (userRepository.findByEmail(trimmedEmail) != null) {
             throw new CodeAwareException(Constants.Errors.USER_REGISTERED, HttpStatus.CONFLICT);
         }
 
+        // generate favorite table and get uuid;
+        // generate cart table and get uuid;
+        // generate order table and get uuid;
+        // generate userSettings table and get uuid;
+
         final var user = new UserDocument(
             UUID.randomUUID(),
             null,
             trimmedEmail,
-            normalizedPhone,
+            clearedPhone,
             passwordEncoder.encode(trimmedPassword),
             normalizedUserName,
             Instant.now(),
