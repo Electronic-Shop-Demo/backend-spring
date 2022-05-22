@@ -17,7 +17,7 @@ import static com.mairwunnx.application.Constants.MongoDb.Authors.PAVEL_EROKHIN;
 
 @RequiredArgsConstructor
 @ChangeUnit(id = "addcaseinsensetiveindexes", order = "2", author = PAVEL_EROKHIN)
-public final class V2AddCaseInsensetiveIndexes {
+public final class V2AddCaseInsensitiveIndexes {
 
     @NonNull private final MongoDatabase mongoDatabase;
 
