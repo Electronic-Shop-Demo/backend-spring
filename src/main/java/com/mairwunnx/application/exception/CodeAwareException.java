@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public final class CodeAwareException extends RuntimeException {
-    private final int code;
 
-    @NotNull
-    private final HttpStatus status;
+    private final int code;
+    @NotNull private final HttpStatus status;
+
 }
