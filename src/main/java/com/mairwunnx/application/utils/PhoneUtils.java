@@ -10,7 +10,7 @@ import static com.mairwunnx.application.Constants.Validations.USER_NUMBER_ALLOWE
 public final class PhoneUtils {
 
     @ParametersAreNonnullByDefault
-    public static @NotNull String trimPhone(final String phone) {
+    public static @NotNull String clear(final String phone) {
         return StringUtils.replaceChars(phone, USER_NUMBER_ALLOWED_CHARS, "");
     }
 
