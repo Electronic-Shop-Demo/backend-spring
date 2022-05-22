@@ -22,7 +22,7 @@ public final class PhoneValidator implements ValidatorBase<String> {
             throw new CodeAwareException(Constants.Errors.USER_INCORRECT_PHONE, HttpStatus.BAD_REQUEST);
         }
 
-        final var trimmedCandidate = PhoneUtils.trimPhone(candidate);
+        final var trimmedCandidate = PhoneUtils.clear(candidate);
         if (isValidNumberLength(trimmedCandidate)) {
             throw new CodeAwareException(Constants.Errors.USER_INCORRECT_PHONE, HttpStatus.BAD_REQUEST);
         }
