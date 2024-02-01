@@ -1,7 +1,7 @@
 # Dependencies provided without specific versions prodived by spring boot plugin.
 
 [versions]
-jetbrains-annotations = "23.0.0"
+jetbrains-annotations = "23.1.0"
 mapstruct = "1.4.2.Final"
 guava = "31.1-jre"
 bcpkix = "1.71"
