@@ -2,7 +2,7 @@
 
 [versions]
 jetbrains-annotations = "23.0.0"
-mapstruct = "1.4.2.Final"
+mapstruct = "1.6.2"
 guava = "31.1-jre"
 bcpkix = "1.71"
 apache-commons-lang = "3.12.0"
