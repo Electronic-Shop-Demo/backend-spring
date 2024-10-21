@@ -10,7 +10,7 @@ apache-commons-text = "1.9"
 auth0-jwt = "3.19.2"
 jedis = "4.2.3"
 mongodb-driver = "4.6.0"
-jooq = "3.17.0-SNAPSHOT"
+jooq = "3.19.14"
 mongock = "5.1.0"
 
 [libraries]
